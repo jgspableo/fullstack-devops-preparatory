@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etch-A-Sketch</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./main.js" defer></script>
+
+</head>
+<body>
+    <div class="everytin">
+        <aside class="control-panel">
+            <p class="title">Etch-A-Sketch</p>
+            <p class="subtitle">Click & drag to draw. Use the tools below.</p>
+            <div class="grid-size-row">
+                <label for="size">
+                    Grid size:<span class="num-badge" id="gridLabel">-</span>
+                </label>
+                <input id="size" type="range" min="16" max="100" value="-" step="1">
+            </div>
+            <div class="color-row">
+                <label for="color">
+                    Ink color</label>
+                <input id="color" type="color" value="#22c55e">
+            </div>
+            <div class="draw-tools-btns">
+                <button id="drawBtn" class="mode-btn active" type="button">
+                    Draw</button>  
+                <button id="eraseBtn" class="mode-btn" type="button">
+                    Erase</button>  
+                <button id="rainbowBtn" class="mode-btn" type="button">
+                    Rainbow</button>  
+                <button id="shadeBtn" class="mode-btn" type="button">
+                    Shade</button>  
+            </div>
+            <div class="show-gridlines">
+                <input id="isShowGridlines" type="checkbox" checked="true">
+                <label for="isShowGridlines">Show gridlines</label>
+            </div>
+            <div class="addtl-tools">
+                <button class="addtl-btn active" id="hoverMode" type="button">
+                    Hover mode: On</button>
+                <button class="addtl-btn danger" id="clear" type="button">
+                    Shake to clear</button>
+            </div>
+            <p class="hint">
+                Tip: hold mouse/touch and move to draw. Try “Rainbow” for random colors or “Shade” to build opacity in 10% steps.
+            </p>
+        </aside>
+        <main class="container">
+            <div class="gridlines" id="grid"></div>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./mainStyles.css"/>
+    <title>Rock Paper Scissors</title>
+    <script src="./main.js" defer></script>
+</head>
+<body>
+    <div class="everything">
+        <div class="header">
+            <h1 id="title">Rock · Paper · Scissors</h1>
+            <div class="right">
+                <button id="newGmBtn">New Game</button>
+                <button id="resetBtn" type="button" disabled autocomplete="off">Reset</button>
+                <span id="bo5Badge">First to 5</span>
+            </div>
+        </div>
+
+        <section class="content">
+            <div class="contentLeft">
+
+                <h3 id="mymoveTxt">Make Your Move</h3>
+
+                <div class="choices">
+                    <button id="rockBtn" type="button" disabled autocomplete="off"> 
+                        <span class="emo">✊</span> 
+                        Rock
+                    </button>
+                    <button id="paperBtn" disabled autocomplete="off"> 
+                        <span class="emo">✋</span> 
+                        Paper
+                    </button>
+                    <button id="scissorsBtn" disabled autocomplete="off"> 
+                        <span class="emo">✌️</span> 
+                        Scissors
+                    </button>
+                </div>
+
+                <div id="roundInfo">
+                    <p>
+                        <strong>Round:</strong>
+                        <span id="roundNum"> - </span>
+                    </p>
+                    <p>
+                        <strong>You:</strong> 
+                        <span id="humanChoice"> - </span>
+                        <strong>• CPU: </strong>
+                        <span id="compChoice"> - </span>
+                    </p>
+                    <h3 id="roundTxt">Press "New Game" to start.</h3>
+                </div>
+
+            </div>
+
+            <div class="contentRight">
+
+                <h3>Scoreboard</h3>
+                <div class="scoreContainer">
+                    <div class="score">
+                        You
+                        <span id="humanScore">0</span>
+                    </div>
+                    <div class="score">
+                        Computer
+                        <span id="compScore">0</span>
+                    </div>
+                </div>
+
+                <div class="history">
+                    <ul class="hist" id="histList"></ul>
+                </div>
+
+            </div>
+
+        </section>
+
+        <div class="footer">
+            <p>Tip: use keyboard shortcuts R / P / S for quick moves.</p>
+        </div>
+    </div>
+</body>
+</html>

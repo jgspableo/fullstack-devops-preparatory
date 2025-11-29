@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Number</title>
+</head>
+<body>
+    <script>
+        let userGuess = null;
+        let number = 0;
+        let guesses = 0;
+
+        // display welcome prompt to start the game
+        function welcome() {
+            alert("Welcome to Guess the Number! I'm thinking of a number between 1 and 20.\nYou have 5 attempts to guess it.");
+        }
+
+        // generate the number from 1-20
+        function getNumber() {
+            number = Math.floor(Math.random() * 20) + 1; // 1–20
+        }
+
+        // check if the user's guess is correct
+        function checkUserGuess(number, userGuess) {
+            return (number === userGuess);
+        }
+
+        // prompt the user to guess the number up to 5 times; give hints each guess
+        function getUserGuess() {
+            guesses = 0; // reset guesses
+
+            while (guesses < 5) {
+                let input = prompt(`Attempt ${guesses + 1} of 5:\nGuess a number between 1 and 20:`);
+
+                // if user clicks "Cancel"
+                if (input === null) {
+                    alert("Game cancelled.");
+                    return; // end this game
+                }
+
+                userGuess = parseInt(input, 10);
+
+                // validate input
+                if (isNaN(userGuess) || userGuess < 1 || userGuess > 20) {
+                    alert("Please enter a valid number between 1 and 20.");
+                    continue; // don't count invalid input as an attempt
+                }
+
+                guesses++;
+
+                if (checkUserGuess(number, userGuess)) {
+                    alert(`🎉 Correct! The number was ${number}.\nYou guessed it in ${guesses} attempts.`);
+                    return; // end this game
+                } else if (userGuess < number) {
+                    alert("Too low! Try a higher number.");
+                } else {
+                    alert("Too high! Try a lower number.");
+                }
+            }
+
+            // if user runs out of guesses
+            alert(`😢 Sorry, you're out of guesses.\nThe number was ${number}.`);
+        }
+
+        // play a single game
+        function startGame() {
+            welcome();
+            getNumber();
+            getUserGuess();
+        }
+
+        // main loop: keep starting new games until user chooses not to
+        function main() {
+            do {
+                startGame();
+            } while (confirm("Do you want to play again?"));
+
+            alert("Thanks for playing! 👋");
+        }
+
+        // automatically start the main loop when page loads
+        main();
+    </script>
+</body>
+</html>
