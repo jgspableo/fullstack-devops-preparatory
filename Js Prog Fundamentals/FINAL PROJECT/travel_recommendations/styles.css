@@ -1,0 +1,88 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: antiquewhite;
+    margin: 0;
+}
+
+.logoDiv {
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#logo {
+    height: 3rem;
+    width: 3rem;
+}
+
+.navList {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+.navList a {
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.navList a:hover {
+    color: rgb(0, 153, 255); 
+    font-weight: bolder;
+    font-size: larger;
+}
+
+#home {
+    margin: 0;
+    background-image: url("./images/beach.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+#introDiv {
+    margin: 3rem;
+    margin-right: 10rem;
+}
+
+#slogan {
+    margin: 0
+}
+
+#aboutUs {
+    margin: 3rem;
+}
+
+#teamInfoDiv {
+    display: flex;
+    gap: 3rem;
+}
+
+
+.pfpPic {
+    width: 4rem;
+    height: 4rem;
+}
+
+
+.pageSection {
+    display: none;
+}
+
+.active{
+    display: block;
+}
+
