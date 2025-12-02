@@ -20,8 +20,8 @@
 
         <div class="searchContainer">
             <input id="searchBar" type="text" placeholder="Enter destination...">
-            <button id="searchBtn">Search</button>
-            <button id="resetBtn">Reset</button>
+            <button id="searchBtn" onclick="updateResults()">Search</button>
+            <button id="resetBtn" onclick="clearResults()">Reset</button>
         </div>
     </nav>
 
@@ -38,8 +38,8 @@
 
     <section id="aboutUs" class="pageSection">
         <div id="infoDiv">
-            <h1 id="abtUsTitle">ABOUT US</h1>
-            <h3>
+            <h1 class="aboutUsTxt">ABOUT US</h1>
+            <h3 class="aboutUsTxt">
                 Founded in 2024, TravelOS is a next-generation travel technology company dedicated to upgrading the way people explore the world by acting as a centralized "operating system" for adventure. We bridge the gap between complex itinerary planning and a seamless user experience, ensuring that booking a trip is as intuitive, glitch-free, and personalized as launching your favorite app. By "debugging" the stress of travel, we aim to become the world's leading interface for exploration, allowing you to focus on the journey while keeping every destination just one click away.
             </h3>
         </div>
@@ -47,20 +47,20 @@
             <h2 id="ourTmTxt">Our Team</h2>
             <div class="teamDiv">
                 <img class="pfpPic" src="./images/person.png" alt="">
-                <p><b>Name</b></p>
-                <p>Responsible for</p>
+                <p class="teamTxt"><b>Name</b></p>
+                <p class="teamTxt">Responsible for</p>
                 <div class="posDiv">CEO</div>
             </div>
             <div class="teamDiv">
                 <img class="pfpPic" src="./images/person.png" alt="">
-                <p><b>Name</b></p>
-                <p>Responsible for</p>
+                <p class="teamTxt"><b>Name</b></p>
+                <p class="teamTxt">Responsible for</p>
                 <div class="posDiv">Team Lead</div>  
             </div>
             <div class="teamDiv">
                 <img class="pfpPic" src="./images/person.png" alt="">
-                <p><b>Name</b></p>
-                <p>Responsible for</p>
+                <p class="teamTxt"><b>Name</b></p>
+                <p class="teamTxt">Responsible for</p>
                 <div class="posDiv">Delivery Head</div>
             </div>
         </div>
@@ -69,7 +69,6 @@
     <section id="contactUs" class="pageSection">
         <div id="contTitleDiv">
             <h1>CONTACT US</h1>
-            <h3>Get in touch</h3>
         </div>
         <div id="conDeetsDiv">
             <label for="name">Name</label> 
@@ -77,10 +76,15 @@
             <label for="email">Email</label> 
             <input type="text" name="email" placeholder="Enter your email">
             <label for="message">Message</label> 
-            <input type="text" name="message" placeholder="Type your message">
+            <textarea name="message" id="messageBox" placeholder="Type message here"></textarea>
             <button id="submitBtn">Submit</button>
         </div>
     </section>
+    
+    <div class="searchResults" id="searchResultsDiv">
+
+    </div>
+
     <script src="travelRecommendation.js"></script>
 </body>
 </html>
