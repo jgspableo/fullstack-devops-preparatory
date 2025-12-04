@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world
+# ✅ CORRECTED YAML
+spec:
+  selector:
+    matchLabels:
+      run: hello-world
+  template:
+    metadata:
+      labels:
+        run: hello-world
+    spec:
+      containers:
+      - name: hello-world
+        image: hello-world:3    # Moved out of resources
+        imagePullPolicy: Never
+        resources:              # Now a sibling of 'image'
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:                  # Moved out of resources
+        - containerPort: 8080
+        envFrom:                # Moved out of resources
+        - configMapRef:
+            name: app-config
+        securityContext:        # Moved out of resources
+          allowPrivilegeEscalation: false
+          runAsNonRoot: true
+          capabilities:
+            drop: ["ALL"]
+          seccompProfile:
+            type: "RuntimeDefault"
+          runAsUser: 999
