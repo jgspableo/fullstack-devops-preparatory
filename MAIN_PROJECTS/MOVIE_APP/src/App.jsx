@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 import { useDebounce } from "react-use";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import Search from "./components/Search.jsx";
 import Spinner from "./components/Spinner.jsx";
 import "./App.css";
 import MovieCard from "./components/MovieCard.jsx";
-import { updateSearchCount } from "./appwrite.js";
+import { updateSearchCount, getTrendingMovies } from "./appwrite.js";
 
 const API_BASE_URL = "https://api.themoviedb.org/3";
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
@@ -24,6 +22,7 @@ function App() {
   const [errorMessage, setErrorMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
+  const [trendingMovies, setTrendingMovies] = useState([]);
 
   useDebounce(() => setDebouncedSearchTerm(searchTerm), 500, [searchTerm]);
 
@@ -45,9 +44,15 @@ function App() {
         setMovieList([]);
         return;
       }
-      setMovieList(data.results || []);
-      if (query && data.results.length > 0) {
-        await updateSearchCount(query, data.results[0]);
+      const results = data.results || [];
+      setMovieList(results);
+
+      // Only count searches when we have a result with a poster (avoids null poster URLs)
+      if (query && results.length > 0) {
+        const firstWithPoster = results.find((m) => m.poster_path);
+        if (firstWithPoster) {
+          await updateSearchCount(query, firstWithPoster);
+        }
       }
     } catch (error) {
       setErrorMessage("Error fetching movies. Please try again later.");
@@ -55,6 +60,19 @@ function App() {
       setIsLoading(false);
     }
   };
+
+  const loadTrendingMovies = async () => {
+    try {
+      const movies = await getTrendingMovies();
+      setTrendingMovies(movies);
+    } catch (error) {
+      setErrorMessage("Error fetching trending movies. Please try again later.");
+    }
+  };
+
+  useEffect(() => {
+    loadTrendingMovies();
+  }, []);
 
   useEffect(() => {
     fetchMovies(debouncedSearchTerm);
@@ -73,8 +91,22 @@ function App() {
           <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         </header>
 
+        {trendingMovies.length > 0 && (
+          <section className="trending">
+            <h2>Trending Movies</h2>
+            <ul>
+              {trendingMovies.map((movie, index) => (
+                <li key={index}>
+                  <p>{index + 1}</p>
+                  <img src={movie.poster_url} alt={movie.title} />
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+        
         <section className="all-movies">
-          <h2 className="mt-[20px] text-left">All Movies</h2>
+          <h2>All Movies</h2>
 
           {isLoading ? (
             <Spinner />
