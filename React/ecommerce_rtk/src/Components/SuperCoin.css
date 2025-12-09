@@ -1,0 +1,17 @@
+.supercoin-cont {
+  margin-top: 10px;
+  padding: 10px;
+  text-align: center;
+  border: thick double orange;
+}
+
+.alert-maintext {
+  font-weight: 700;
+  color: gold;
+  margin: 0;
+}
+
+.supercoin-number {
+    color: gold;
+    font-weight: 900;
+} 
