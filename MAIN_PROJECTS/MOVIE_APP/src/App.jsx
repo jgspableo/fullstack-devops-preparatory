@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDebounce } from "react-use";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
 import Search from "./components/Search.jsx";
 import Spinner from "./components/Spinner.jsx";
 import "./App.css";
@@ -23,7 +25,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
   const [trendingMovies, setTrendingMovies] = useState([]);
-
+  
   useDebounce(() => setDebouncedSearchTerm(searchTerm), 500, [searchTerm]);
 
   const fetchMovies = async (query = "") => {
@@ -44,15 +46,9 @@ function App() {
         setMovieList([]);
         return;
       }
-      const results = data.results || [];
-      setMovieList(results);
-
-      // Only count searches when we have a result with a poster (avoids null poster URLs)
-      if (query && results.length > 0) {
-        const firstWithPoster = results.find((m) => m.poster_path);
-        if (firstWithPoster) {
-          await updateSearchCount(query, firstWithPoster);
-        }
+      setMovieList(data.results || []);
+      if (query && data.results.length > 0) {
+        await updateSearchCount(query, data.results[0]);
       }
     } catch (error) {
       setErrorMessage("Error fetching movies. Please try again later.");
