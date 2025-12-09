@@ -6,6 +6,7 @@ const MovieCard = ({
   <div className="movie-card">
     <img
       src={
+        //check if there is a movie poster in the movie db api 
         poster_path
           ? `https://image.tmdb.org/t/p/w500/${poster_path}`
           : "no-poster.png"
@@ -19,12 +20,14 @@ const MovieCard = ({
       <div className="content">
         <div className="rating">
           <img src="star.svg" alt="star" />
-          <p>{vote_average ? vote_average.toFixed(1) : "N/A"}</p>
+          {/* fix the rating to 1 decimal point */}
+          <p>{vote_average ? vote_average.toFixed(1) : "N/A"}</p> 
         </div>
         <span>•</span>
-        <p className="lang">{original_language}</p>
+        <p className="lang">{original_language}</p>z
         <span>•</span>
         <p className="year">
+          {/* format api-given date to just the year (split using '-' delimiter, then return first part) */}
           {release_date ? release_date.split("-")[0] : "N/A"}
         </p>
       </div>

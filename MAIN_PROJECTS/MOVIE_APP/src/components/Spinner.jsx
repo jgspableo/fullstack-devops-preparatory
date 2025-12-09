@@ -1,6 +1,7 @@
 import React from "react";
 
 const Spinner = () => {
+  //imported spinner from online
   return (
     <div role="status">
       <svg

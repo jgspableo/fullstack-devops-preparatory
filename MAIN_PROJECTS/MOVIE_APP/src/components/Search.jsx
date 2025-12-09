@@ -1,6 +1,7 @@
 import React from "react";
 
 const Search = ( { searchTerm, setSearchTerm }) => {
+  //define search bar structure
   return (
     <div className="search">
       <div>
