@@ -70,11 +70,13 @@ const CartItem = ({ onContinueShopping }) => {
     const totalAmount = calculateTotalAmount();
   
     // Simple checkout summary
-    alert(
-      `Thank you for your purchase!\n\n` +
+    if (confirm("Are you sure you want to checkout already?")) {
+      alert(`Thank you for your purchase!\n\n` +
         `Total items: ${totalItems}\n` +
-        `Total amount: $${totalAmount}`
-    );
+        `Total amount: $${totalAmount}`)
+    } else {
+      return;
+    }
   
     // Clear the cart in Redux
     dispatch(clearCart());
