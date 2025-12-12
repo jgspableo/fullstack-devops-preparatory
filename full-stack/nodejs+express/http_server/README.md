@@ -1,0 +1,1 @@
+A simple Node.js HTTP server that returns the current date and time using a custom utility function. The project demonstrates basic server creation, module exporting, and environment-based date handling. It includes separate modules for returning formatted dates and handling server responses.
