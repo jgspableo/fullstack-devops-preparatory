@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+* {
+  box-sizing: border-box;
+}
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  font-family: "Inter", sans-serif;
+}
+
+main {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+h3 {
+  font-weight: 600;
+}
+
+label {
+  letter-spacing: 1.5px;
+  font-size: 0.7rem;
+  margin-bottom: 1px;
+}
+
+input {
+  border: 1px solid #E5E7EB;
+}
+
+input:invalid {
+  border: 1px solid red;
+}
+
+.left-container {
+  position: relative;
+  flex: 0 0 38%;
+}
+
+.left-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.logo-container {
+  position: absolute;
+  top: 20%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  width: 100%;
+  height: 15.5%;
+  z-index: 1;
+  padding: 20px 0;
+}
+
+.logo-elements {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-elements img {
+  width: auto;
+  height: 100%;
+}
+
+.logo-elements p {
+  margin: 0;
+  font-family: "";
+  font-size: 100px;
+  font-weight: 100;
+  letter-spacing: -15px;
+}
+
+.footer-container {
+  font-size: 0.7rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: white;
+  text-align: center;
+  margin-bottom: 7px;
+}
+
+.right-container {
+  display: flex;
+  align-items: center;
+}
+
+.top-container,
+.middle-container,
+.bottom-container {
+  padding: 0 40px;
+  padding-right: 100px;
+}
+
+.middle-container {
+  padding-top: 5px;
+  padding-bottom: 40px;
+  margin-bottom: 20px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.form-container {
+  max-width: fit-content;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 80px;
+  grid-row-gap: 20px;
+}
+
+.form-container > div {
+  display: flex;
+  flex-direction: column;
+  width: 120%;
+}
+
+.conf-container button {
+  width: auto;
+  height: auto;
+  padding: 1rem 2rem;
+  color: white;
+  background-color: #596D48;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Inter', sans-serif;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: yellowgreen;
+}

@@ -1,0 +1,107 @@
+/* 2-column layout */
+main {
+    min-height: 100vh;
+    display: flex;
+  }
+  
+  /* LEFT SIDE */
+  .left-container {
+    flex: 0 0 40%;          /* left column width */
+    position: relative;     /* anchors absolute children */
+    overflow: hidden;       /* prevents img overflow */
+  }
+  
+  /* make the img behave like a background cover */
+  #img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  
+  /* logo bar over the image */
+  .logo-container {
+    position: absolute;
+    top: 140px;             /* tweak */
+    left: 0;
+    right: 0;
+  
+    background: rgba(0,0,0,0.35);
+    padding: 18px 0;
+  }
+  
+  .logo-elements {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+  
+  .logo-elements img {
+    width: 56px;
+    height: 56px;
+  }
+  
+  .logo-elements p {
+    margin: 0;
+    color: white;
+    font-size: 48px;
+    letter-spacing: 3px;
+    font-weight: 700;
+  }
+  
+  /* footer pinned to bottom of the image panel */
+  .footer-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 12px;
+    display: flex;
+    justify-content: center;
+    z-index: 2; /* ensure above image */
+  }
+  
+  .footer-container footer {
+    color: rgba(255,255,255,0.85);
+    font-size: 12px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+  }
+  
+  /* RIGHT SIDE */
+  .right-container {
+    flex: 1;
+    background: #f3f3f3;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* optional: spacing similar to screenshot */
+  .top-container,
+  .middle-container,
+  .bottom-container {
+    padding: 32px 48px;
+  }
+  
+  .middle-container {
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+  
+  .form-container {
+    display: flex;
+    gap: 48px;
+  }
+  
+  .form-left, .form-right {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  input {
+    width: 260px;
+    height: 32px;
+  }
+  
