@@ -8,8 +8,14 @@ const newRouter = require("./routes/newRouter");
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
+app.use(express.urlencoded({ extended: true }));
+
 app.use("/", indexRouter);
 app.use("/new", newRouter);
+
+app.use((err, req, res, next) => {
+  if (err) console.error(err);
+});
 
 const PORT = 8080;
 app.listen(PORT, () => {
