@@ -1,0 +1,14 @@
+<h1><% title %></h1>
+<p>Results for "<%= query%>"</p>
+
+<ul>
+  <% if (users && users.length) { %> <% users.forEach(user => { %>
+  <li><%= user.firstName %> <%= user.lastName %> — <%= user.email %></li>
+  <% }) %> <% } else { %>
+  <li>No matches found.</li>
+  <% } %>
+</ul>
+
+<a href="/">
+  <button>Back to Home</button>
+</a>
