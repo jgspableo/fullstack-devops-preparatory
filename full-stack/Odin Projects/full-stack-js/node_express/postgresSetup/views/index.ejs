@@ -7,6 +7,11 @@
   </head>
   <body>
     <h1><%= title %></h1>
+    <form action="/search" method="get">
+      <label for="search">Search Users:</label>
+      <input type="text" name="search" />
+      <button>Search</button>
+    </form>
     <ul>
       <% usernames.map( user => { %>
       <li><%= user.username %></li>
@@ -14,6 +19,9 @@
     </ul>
     <a href="/new">
       <button>Create user</button>
+    </a>
+    <a href="/delete">
+      <button style="color: red">Delete all users</button>
     </a>
   </body>
 </html>

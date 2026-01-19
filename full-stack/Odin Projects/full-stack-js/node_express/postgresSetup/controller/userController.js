@@ -21,8 +21,24 @@ async function userCreatePost(req, res) {
   res.redirect("/");
 }
 
+async function userSearchGet(req, res) {
+  const username = req.query.search;
+  const users = await db.searchUsername(username);
+  res.render("searchUser", {
+    title: "Search Results:",
+    users: users,
+  });
+}
+
+async function usersDeleteAllGet(req, res) {
+  await db.deleteAllUsers();
+  res.redirect("/");
+}
+
 module.exports = {
   userListGet,
   userCreateGet,
   userCreatePost,
+  userSearchGet,
+  usersDeleteAllGet,
 };
