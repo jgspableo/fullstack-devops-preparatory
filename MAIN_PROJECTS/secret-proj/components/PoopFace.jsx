@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import "./styles/poopFace.css";
 
-function PoopFace() {
+function PoopFace({ headAngle = 0 }) {
   const faceRef = useRef(null);
-  const [angle, setAngle] = useState(0);
+  const [localAngle, setLocalAngle] = useState(0);
 
   useEffect(() => {
     function handleMove(e) {
@@ -17,23 +17,26 @@ function PoopFace() {
       const dx = e.clientX - centerX;
       const dy = e.clientY - centerY;
 
-      setAngle(Math.atan2(dy, dx));
+      // angle in world space
+      const worldAngle = Math.atan2(dy, dx);
+      // compensate for the poop's rotation so eyes still point at the cursor
+      const angleInHeadSpace = worldAngle - headAngle;
+
+      setLocalAngle(angleInHeadSpace);
     }
 
     window.addEventListener("mousemove", handleMove);
     return () => window.removeEventListener("mousemove", handleMove);
-  }, []);
+  }, [headAngle]);
 
-  // pupils rotate a bit inside each white eye
   const pupilStyle = {
-    transform: `translate(-50%, -50%) rotate(${angle}rad) translate(4px, 0)`,
+    transform: `translate(-50%, -50%) rotate(${localAngle}rad) translate(4px, 0)`,
   };
 
   return (
     <div className="poop-face" ref={faceRef}>
       <div className="poop-emoji">💩</div>
 
-      {/* white eyes + moving pupils */}
       <div className="eye eye-left">
         <div className="pupil" style={pupilStyle} />
       </div>
