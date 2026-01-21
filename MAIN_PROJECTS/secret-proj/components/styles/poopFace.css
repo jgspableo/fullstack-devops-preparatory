@@ -1,0 +1,45 @@
+/* PoopFace.css */
+
+/* match the emoji bounding box */
+.poop-face {
+  position: relative;
+  width: 52px;
+  height: 55px;
+  display: inline-block;
+}
+
+.poop-emoji {
+  font-size: 52px;
+  line-height: 1;
+}
+
+/* --- WHITE EYES --- */
+.eye {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  top: 26px;        /* move eyes up/down */
+}
+
+/* spacing left/right (tuned for your emoji) */
+.eye-left {
+  left: 16px;
+}
+
+.eye-right {
+  left: 35px;
+}
+
+/* --- PUPILS --- */
+.pupil {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: black;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  /* no transform here – it's set inline from React */
+}
